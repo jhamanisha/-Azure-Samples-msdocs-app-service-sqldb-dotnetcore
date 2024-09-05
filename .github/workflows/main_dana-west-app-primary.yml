@@ -30,8 +30,8 @@ jobs:
       - name: dotnet install ef
         run: dotnet tool install -g dotnet-ef --version 8.*
 
-      - name: Create migrations bundle
-        run: dotnet ef migrations bundle --runtime linux-x64 -o ${{env.DOTNET_ROOT}}/myapp/migrationsbundle
+      - name: create migrations bundle
+        run: dotnet ef migrations bundle --self-contained -r linux-x64 -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
         #- name: dotnet bundle migration
         #  run: dotnet ef migrations bundle --self-contained -r linux-x64 -pDotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
       
